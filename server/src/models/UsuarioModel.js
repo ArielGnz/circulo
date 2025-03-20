@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primayKey: true,
+      primaryKey: true,
     },
-    npmbre: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Usuario.associate = (models) => {
-    Usuario.hasMany(models.Prestamo, { foreingKey: "usuarioId" });
+    Usuario.hasMany(models.Prestamo, { foreignKey: "usuarioId" });
   };
 
   return Usuario;
