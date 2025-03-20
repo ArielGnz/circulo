@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define("Usuario", {
     id: {
@@ -6,26 +5,26 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    apellido: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     dni: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
+    apellido: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     cbu: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     cuil: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   });
 
