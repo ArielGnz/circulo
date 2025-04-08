@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { Usuario } = require('../db');
 
-const FILE_PATH = path.join(__dirname, '../../server/db.json');
-
+const FILE_PATH = path.join(__dirname, '../../api/db.json');
 
 const syncJsonDb = async () => {
     try {
