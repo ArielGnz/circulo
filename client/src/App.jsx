@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        circulo
+        <h1>CIRCULO</h1>circulo
       </div>
     </>
   );
