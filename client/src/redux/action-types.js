@@ -1,0 +1,1 @@
+export const GET_SOCIOS = 'GET_SOCIOS';
