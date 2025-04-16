@@ -18,3 +18,5 @@ const allSocios = async(req, res) => {
 
     }
 }
+
+module.exports = {allSocios}
