@@ -7,11 +7,36 @@ const Socios = () => {
   const dispatch = useDispatch();
   const socios = useSelector((state) => state.socios);
   const [search, setSearch] = useState("");
-  const [result, setResult] = useState("");
+  const [filteredSocios, setFilteredSocios] = useState([]);
+
+  const normalizar = (texto) => {
+    return texto
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+  
 
   useEffect(() => {
     dispatch(getSocios());
   }, []);
+
+  useEffect(() => {
+    const termino = normalizar(search).split(" ").filter(Boolean);
+  
+    const filtro = socios.filter((socio) => {
+      const dni = socio.dni.toString();
+      const nombre = normalizar(socio.nombre);
+      const apellido = normalizar(socio.apellido);
+      const datosSocio = `${apellido} ${nombre} ${dni}`;
+  
+      return termino.every(palabra => datosSocio.includes(palabra));
+    });
+  
+    setFilteredSocios(filtro);
+  }, [search, socios]);
+  
+ 
 
   return (
     <div className="flex flex-col justify-center items-center m-16">
@@ -25,14 +50,7 @@ const Socios = () => {
           placeholder="Ingrese nombre o DNI"
           className="border bg-white mx-2 text-xl rounded-md px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-300"
         />
-        <button className="bg-blue-500 text-white text-xl px-4 py-2 rounded-md hover:bg-blue-600 transition">
-          Buscar
-        </button>
       </div>
-
-      {result && (
-        <div className="border bg-white rounded p-4 bg-gray-100">{result}</div>
-      )}
 
       <table className="table-auto bg-white rounded shadow mt-8 w-full max-w-4xl">
         <thead>
@@ -43,17 +61,16 @@ const Socios = () => {
           </tr>
         </thead>
         <tbody>
-          {socios &&
-            socios
-              .slice()
-              .sort((a, b) => a.dni - b.dni)
-              .map((socio) => (
-                <tr key={socio.id} className="border-t">
-                  <td className="px-4 py-2">{socio.dni}</td>
-                  <td className="px-4 py-2">{socio.apellido}</td>
-                  <td className="px-4 py-2">{socio.nombre}</td>
-                </tr>
-              ))}
+          {(search ? filteredSocios : socios)
+            .slice()
+            .sort((a, b) => a.dni - b.dni)
+            .map((socio) => (
+              <tr key={socio.id} className="border-t">
+                <td className="px-4 py-2">{socio.dni}</td>
+                <td className="px-4 py-2">{socio.apellido}</td>
+                <td className="px-4 py-2">{socio.nombre}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
