@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Socios from "./components/Socios";
+import Ayuda from "./components/Ayuda";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/socios" element={<Socios />} />
+          <Route path="/ayuda" element={<Ayuda />} />
         </Routes>
       </div>
     </div>
