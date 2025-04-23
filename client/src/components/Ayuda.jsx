@@ -34,6 +34,13 @@ const Ayuda = () => {
 
     setFilteredSocios(filtro);
   }, [search, socios]);
+
+  // Acá podés manejar lo que pasa cuando se aprieta "Agregar"
+  const handleAgregar = (socio) => {
+    console.log("Socio agregado:", socio);
+    // Acá podrías despachar una acción, o agregar a una lista
+  };
+
   return (
     <div className="flex flex-col justify-center items-center m-16">
       <h1 className="text-4xl font-bold mb-6 text-white">Buscar Socios</h1>
@@ -54,6 +61,7 @@ const Ayuda = () => {
             <th className="px-4 py-2 text-left">DNI</th>
             <th className="px-4 py-2 text-left">Apellido</th>
             <th className="px-4 py-2 text-left">Nombre</th>
+            <th className="px-4 py-2 text-left">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +73,14 @@ const Ayuda = () => {
                 <td className="px-4 py-2">{socio.dni}</td>
                 <td className="px-4 py-2">{socio.apellido}</td>
                 <td className="px-4 py-2">{socio.nombre}</td>
+                <td className="px-4 py-2">
+                  <button
+                    onClick={() => handleAgregar(socio)}
+                    className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+                  >
+                    Agregar
+                  </button>
+                </td>
               </tr>
             ))}
         </tbody>
