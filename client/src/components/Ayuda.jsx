@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSocios } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 const Ayuda = () => {
   const dispatch = useDispatch();
@@ -35,10 +36,8 @@ const Ayuda = () => {
     setFilteredSocios(filtro);
   }, [search, socios]);
 
-  // Acá podés manejar lo que pasa cuando se aprieta "Agregar"
   const handleAgregar = (socio) => {
     console.log("Socio agregado:", socio);
-    // Acá podrías despachar una acción, o agregar a una lista
   };
 
   return (
@@ -53,6 +52,10 @@ const Ayuda = () => {
           placeholder="Ingrese nombre o DNI"
           className="border bg-white mx-2 text-xl rounded-md px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-300"
         />
+
+        <Link to="/PrestamoList">
+          <button className="mx-4 text-xl bg-sky-600 rounded-md p-2 text-white font-semibold">Listado</button>
+        </Link>
       </div>
 
       <table className="table-auto bg-white rounded shadow mt-8 w-full max-w-4xl">
