@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSocios } from "../redux/actions";
+import { getSocios, postPrestamo } from "../redux/actions";
 import { Link } from "react-router-dom";
 
 const Ayuda = () => {
@@ -64,6 +64,7 @@ const Ayuda = () => {
             <th className="px-4 py-2 text-left">DNI</th>
             <th className="px-4 py-2 text-left">Apellido</th>
             <th className="px-4 py-2 text-left">Nombre</th>
+            <th className="px-4 py-2 text-left">Importe</th>
             <th className="px-4 py-2 text-left">Acción</th>
           </tr>
         </thead>
@@ -76,6 +77,7 @@ const Ayuda = () => {
                 <td className="px-4 py-2">{socio.dni}</td>
                 <td className="px-4 py-2">{socio.apellido}</td>
                 <td className="px-4 py-2">{socio.nombre}</td>
+                <td className="px-4 py-2"><input type="text" /></td>
                 <td className="px-4 py-2">
                   <button
                     onClick={() => handleAgregar(socio)}

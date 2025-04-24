@@ -1,4 +1,5 @@
 import { GET_SOCIOS } from './action-types';
+import { POST_PRESTAMO } from './action-types';
 
 import axios from 'axios';
 
@@ -13,3 +14,17 @@ export const getSocios = () => {
         })
     }
 }
+
+export const postPrestamo = (prestamoData) => {
+    return async function(){
+        try {
+            const response = await axios.post("/prestamos", prestamoData);
+            return response.data;
+        } catch (error) {
+            console.error("Error en postPrestamo:", error.response?.data || error.message);
+            throw error;
+        }
+    }
+}
+
+
