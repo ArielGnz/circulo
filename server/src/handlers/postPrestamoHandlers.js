@@ -1,13 +1,18 @@
 const { crearPrestamoDB } = require("../controllers/postControllers/");
 
 const crearPrestamo = async (req, res) => {
+
+    const { importe, mes, usuarioId, fecha } = req.body
+
     try {
         
-        const {mes, importe, usuarioId} = req.body;
+        if(!importe || !mes || !usuarioId){
+            return res.status(400).json({message: "Faltan datos obligatorios"})
+        }
 
-        const nuevo = await crearPrestamoDB({mes, importe, usuarioId});
+        const prestamo = await crearPrestamoDB({mes, importe, usuarioId, fecha});
 
-        res.status(201).json(nuevo);
+        res.status(201).json(prestamo);
 
     } catch (error) {
         console.log("Error al crear el prestamo:", error.message);

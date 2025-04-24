@@ -23,6 +23,11 @@ module.exports = (sequelize) => {
         key: "id",
       },
     },
+    fecha: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    }    
   });
 
   Prestamo.associate = (models) => {
