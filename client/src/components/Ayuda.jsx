@@ -9,6 +9,29 @@ const Ayuda = () => {
   const socios = useSelector((state) => state.socios);
   const [search, setSearch] = useState("");
   const [filteredSocios, setFilteredSocios] = useState([]);
+  const [importes, setImportes] = useState({});
+
+  const handleAgregar = async (socio) => {
+    const importe = importes[socio.id];
+    if (!importe || isNaN(importe)) {
+      alert("Por favor ingrese un monto valido");
+      return;
+    }
+
+    const nuevoPrestamo = {
+      usuarioId: socio.id,
+      importe: parseInt(importe),
+      fecha: new Date().toISOString().split("T")[0],
+    };
+
+    try {
+      await dispatch(postPrestamo(nuevoPrestamo));
+      alert("Prestamo registrado con exito");
+      setImportes((prev) => ({ ...prev, [socio.id]: "" }));
+    } catch (error) {
+      alert("Error al resgitrar el prestamo");
+    }
+  };
 
   const normalizar = (texto) => {
     return texto
@@ -36,10 +59,6 @@ const Ayuda = () => {
     setFilteredSocios(filtro);
   }, [search, socios]);
 
-  const handleAgregar = (socio) => {
-    console.log("Socio agregado:", socio);
-  };
-
   return (
     <div className="flex flex-col justify-center items-center m-16">
       <h1 className="text-4xl font-bold mb-6 text-white">Buscar Socios</h1>
@@ -54,7 +73,9 @@ const Ayuda = () => {
         />
 
         <Link to="/PrestamoList">
-          <button className="mx-4 text-xl bg-sky-600 rounded-md p-2 text-white font-semibold">Listado</button>
+          <button className="mx-4 text-xl bg-sky-600 rounded-md p-2 text-white font-semibold">
+            Listado
+          </button>
         </Link>
       </div>
 
@@ -77,7 +98,18 @@ const Ayuda = () => {
                 <td className="px-4 py-2">{socio.dni}</td>
                 <td className="px-4 py-2">{socio.apellido}</td>
                 <td className="px-4 py-2">{socio.nombre}</td>
-                <td className="px-4 py-2"><input type="text" /></td>
+                <td className="px-4 py-2">
+                  <input
+                    type="text"
+                    value={importes[socio.id] || ""}
+                    onChange={(e) =>
+                      setImportes((prev) => ({
+                        ...prev,
+                        [socio.id]: e.target.value,
+                      }))
+                    }
+                  />
+                </td>
                 <td className="px-4 py-2">
                   <button
                     onClick={() => handleAgregar(socio)}
