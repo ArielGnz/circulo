@@ -12,25 +12,36 @@ const Ayuda = () => {
   const [importes, setImportes] = useState({});
 
   const handleAgregar = async (socio) => {
-    const importe = importes[socio.id];
+    
+    const importeRaw = importes[socio.id];
+    const importe = parseInt(importeRaw?.trim());
+
     if (!importe || isNaN(importe)) {
-      alert("Por favor ingrese un monto valido");
+      alert("Por favor ingrese un monto válido");
       return;
     }
 
+    const hoy = new Date();
+    const mesActual = `${hoy.getFullYear()}-${(hoy.getMonth() + 1).toString().padStart(2, "0")}`;
+  
     const nuevoPrestamo = {
       usuarioId: socio.id,
       importe: parseInt(importe),
-      fecha: new Date().toISOString().split("T")[0],
+      mes: mesActual,
+      fecha: hoy.toISOString().split("T")[0],
+      
     };
 
     try {
-      await dispatch(postPrestamo(nuevoPrestamo));
-      alert("Prestamo registrado con exito");
-      setImportes((prev) => ({ ...prev, [socio.id]: "" }));
-    } catch (error) {
-      alert("Error al resgitrar el prestamo");
-    }
+        const res = await dispatch(postPrestamo(nuevoPrestamo));
+        console.log("Respuesta del dispatch:", res);
+        alert("Préstamo registrado con éxito");
+        setImportes((prev) => ({ ...prev, [socio.id]: "" }));
+      } catch (error) {
+        console.error("Error al registrar el préstamo:", error);
+        alert("Error al registrar el préstamo");
+      }
+      
   };
 
   const normalizar = (texto) => {

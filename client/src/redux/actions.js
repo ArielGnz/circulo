@@ -16,15 +16,16 @@ export const getSocios = () => {
 }
 
 export const postPrestamo = (prestamoData) => {
-    return async function(){
-        try {
-            const response = await axios.post("/prestamos", prestamoData);
-            return response.data;
-        } catch (error) {
-            console.error("Error en postPrestamo:", error.response?.data || error.message);
-            throw error;
-        }
-    }
-}
+    return async function () {
+      try {
+        const response = await axios.post("/prestamos", prestamoData);
+        return response.data;
+      } catch (error) {
+        console.error("Error en postPrestamo:", error.response?.data || error.message);
+        throw error;
+      }
+    };
+  };
+  
 
 
