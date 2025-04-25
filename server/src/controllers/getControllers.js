@@ -1,8 +1,13 @@
-const { Usuario } = require("../db");
+const { Usuario, Prestamo } = require("../db");
 
 const allSociosDB = async () => {
     const res = await Usuario.findAll();
     return res;
 }
 
-module.exports = {allSociosDB};
+const allPrestamoDB = async () => {
+    const res = await Prestamo.findAll();
+    return res;
+}
+
+module.exports = {allSociosDB, allPrestamoDB};

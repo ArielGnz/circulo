@@ -1,6 +1,7 @@
-const { allSociosDB } = require("../controllers/getControllers");
+const { allSociosDB, allPrestamoDB } = require("../controllers/getControllers");
 
 const allSocios = async(req, res) => {
+    
     try {
         
         const socios = await allSociosDB();
@@ -19,4 +20,17 @@ const allSocios = async(req, res) => {
     }
 }
 
-module.exports = {allSocios}
+const allPrestamo = async (req, res) => {
+    
+    try {
+        const prestamos = await allPrestamoDB();
+        if(prestamos.length === 0){
+            return res.status(404).json({message: "No se encontraron prestamos"})
+        }
+    } catch (error) {
+        console.error("Error al obtener los prestamos", error);
+        res.status(500).json({message: "Error al obtener los prestamos"})
+    }
+}
+
+module.exports = {allSocios, allPrestamo}
