@@ -1,4 +1,4 @@
-import { GET_SOCIOS } from './action-types';
+import { GET_PRESTAMO, GET_SOCIOS } from './action-types';
 import { POST_PRESTAMO } from './action-types';
 
 import axios from 'axios';
@@ -13,6 +13,16 @@ export const getSocios = () => {
             payload: response.data
         })
     }
+}
+
+export const getPrestamo = () => {
+  return async function(dispatch){
+    const response = await axios('/prestamosList');
+    return dispatch({
+      type: GET_PRESTAMO,
+      payload: response.data
+    })
+  }
 }
 
 export const postPrestamo = (prestamoData) => {
