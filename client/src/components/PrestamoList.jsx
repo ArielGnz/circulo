@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPrestamo } from "../redux/actions";
 
 const PrestamoList = () => {
+
+  const dispatch = useDispatch();
+  const prestamos = useSelector((state) => state.prestamos);
   const [anio, setAnio] = useState("");
   const [mes, setMes] = useState("");
+  const [prestamosFiltrados, setPrestamosFiltrados] = useState([]);
 
   const anios = ["2022", "2023", "2024", "2025"];
   const meses = [
@@ -20,9 +26,20 @@ const PrestamoList = () => {
     { value: "12", label: "Diciembre" },
   ];
 
+  useEffect(() => {
+    dispatch(getPrestamo());
+  }, [dispatch]);
+
   const handleFiltrar = () => {
-    console.log("Filtrar por:", { anio, mes });
-    // Acá podrías hacer una búsqueda o filtrar una lista
+    const filtro = prestamos.filter((p) => {
+        const fecha = new Date(p.fecha);
+        const pAnio = fecha.getFullYear().toString();
+        const pMes = String(fecha.getMonth() +1).padStart(2, "0");
+        return (anio ? pAnio === anio : true) && (mes ? pMes === mes :true);
+    });
+
+    setPrestamosFiltrados(filtro);
+       
   };
 
   return (
