@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrestamo, getSocios } from "../redux/actions";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const PrestamoList = () => {
   const dispatch = useDispatch();
   const prestamos = useSelector((state) => state.prestamos);
   const socios = useSelector((state) => state.socios);
+
   const [anio, setAnio] = useState("");
   const [mes, setMes] = useState("");
   const [prestamosFiltrados, setPrestamosFiltrados] = useState([]);
@@ -31,20 +34,6 @@ const PrestamoList = () => {
     dispatch(getSocios());
   }, [dispatch]);
 
-  console.log(prestamos);
-
-  useEffect(() => {
-    const filtro = prestamos.filter((p) => {
-      const fecha = new Date(p.fecha);
-      const pAnio = fecha.getFullYear().toString();
-      const pMes = String(fecha.getMonth() + 1).padStart(2, "0");
-
-      return (anio ? pAnio === anio : true) && (mes ? pMes === mes : true);
-    });
-
-    setPrestamosFiltrados(filtro);
-  }, [anio, mes, prestamos]);
-
   const obtenerNombreSocio = (usuarioId) => {
     const socio = socios.find((s) => s.id === usuarioId);
     return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
@@ -55,21 +44,53 @@ const PrestamoList = () => {
       const fecha = new Date(p.fecha);
       const pAnio = fecha.getFullYear().toString();
       const pMes = String(fecha.getMonth() + 1).padStart(2, "0");
+
       return (anio ? pAnio === anio : true) && (mes ? pMes === mes : true);
     });
 
     setPrestamosFiltrados(filtro);
   };
 
+  const handleDescargarPDF = () => {
+    if (prestamosFiltrados.length === 0) {
+      alert("No hay préstamos para descargar.");
+      return;
+    }
+
+    const doc = new jsPDF();
+    doc.text(`Listado de Préstamos ${mes} - ${anio}`, 14, 20);
+
+    const tableColumn = ["Socio", "Importe", "Fecha"];
+    const tableRows = [];
+
+    prestamosFiltrados.forEach((p) => {
+      const socioNombre = obtenerNombreSocio(p.usuarioId);
+      const importe = `$${p.importe}`;
+      const fecha = p.fecha;
+      tableRows.push([socioNombre, importe, fecha]);
+    });
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 30,
+    });
+
+    const nombreMes = meses.find((m) => m.value === mes)?.label || "todos";
+    const fileName = `prestamos_${anio || "todos"}-${nombreMes}.pdf`;
+
+    doc.save(fileName);
+  };
+
   return (
     <div className="flex flex-col items-center p-8">
-      <h1 className="text-2xl font-bold text-white mb-4">Filtrar Préstamos</h1>
+      <h1 className="text-2xl font-bold text-white mb-4">Seleccionar Periodo</h1>
 
       <div className="flex gap-4 mb-6">
         <select
           value={anio}
           onChange={(e) => setAnio(e.target.value)}
-          className="px-4 py-2 rounded bg-white text-black shadow"
+          className="px-4 py-2 rounded bg-white text-black shadow "
         >
           <option value="">Seleccionar año</option>
           {anios.map((a) => (
@@ -82,7 +103,7 @@ const PrestamoList = () => {
         <select
           value={mes}
           onChange={(e) => setMes(e.target.value)}
-          className="px-4 py-2 rounded bg-white text-black shadow"
+          className="px-4 py-2 rounded bg-white text-black shadow "
         >
           <option value="">Seleccionar mes</option>
           {meses.map((m) => (
@@ -94,37 +115,45 @@ const PrestamoList = () => {
 
         <button
           onClick={handleFiltrar}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer font-semibold"
         >
-          Filtrar
+          Buscar
         </button>
       </div>
 
-      {/* Acá podrías mostrar los resultados filtrados */}
-      <div className="text-white">
+      <div className="text-white mb-2">
         Año seleccionado: {anio || "Ninguno"} <br />
         Mes seleccionado: {mes || "Ninguno"}
       </div>
 
       {prestamosFiltrados.length > 0 ? (
-        <table className="table-auto bg-white rounded shadow w-full max-w-4xl">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="px-4 py-2 text-left">Socio ID</th>
-              <th className="px-4 py-2 text-left">Importe</th>
-              <th className="px-4 py-2 text-left">Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-            {prestamosFiltrados.map((p) => (
-              <tr key={p.id} className="border-t">
-                <td className="px-4 py-2">{obtenerNombreSocio(p.usuarioId)}</td>
-                <td className="px-4 py-2">${p.importe}</td>
-                <td className="px-4 py-2">{p.fecha}</td>
+        <>
+          <table className="table-auto bg-white rounded shadow w-full max-w-4xl">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="px-4 py-2 text-left">Socio</th>
+                <th className="px-4 py-2 text-left">Importe</th>
+                <th className="px-4 py-2 text-left">Fecha</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {prestamosFiltrados.map((p) => (
+                <tr key={p.id} className="border-t">
+                  <td className="px-4 py-2">{obtenerNombreSocio(p.usuarioId)}</td>
+                  <td className="px-4 py-2">${p.importe}</td>
+                  <td className="px-4 py-2">{p.fecha}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <button
+            onClick={handleDescargarPDF}
+            className="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow cursor-pointer"
+          >
+            Descargar PDF
+          </button>
+        </>
       ) : (
         <p className="text-white mt-4">
           No hay préstamos para mostrar. Usa los filtros.
