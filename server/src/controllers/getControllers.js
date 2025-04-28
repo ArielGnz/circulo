@@ -7,6 +7,7 @@ const allSociosDB = async () => {
 
 const allPrestamoDB = async () => {
     const res = await Prestamo.findAll();
+    console.log(res);
     return res;
 }
 

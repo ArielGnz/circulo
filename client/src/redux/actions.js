@@ -17,7 +17,8 @@ export const getSocios = () => {
 
 export const getPrestamo = () => {
   return async function(dispatch){
-    const response = await axios('/prestamosList');
+    const response = await axios.get('/listadoPrestamo');
+    console.log("Datos obtenidos del backend:", response.data);
     return dispatch({
       type: GET_PRESTAMO,
       payload: response.data

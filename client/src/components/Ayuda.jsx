@@ -34,7 +34,6 @@ const Ayuda = () => {
 
     try {
         const res = await dispatch(postPrestamo(nuevoPrestamo));
-        console.log("Respuesta del dispatch:", res);
         alert("Préstamo registrado con éxito");
         setImportes((prev) => ({ ...prev, [socio.id]: "" }));
       } catch (error) {

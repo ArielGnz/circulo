@@ -9,7 +9,7 @@ const allSocios = async(req, res) => {
         if(socios.length === 0){
             return res.status(404).json({message: "No se encontraron socios"})
         }
-
+        
         res.status(200).json(socios);
 
     } catch (error) {
@@ -24,9 +24,13 @@ const allPrestamo = async (req, res) => {
     
     try {
         const prestamos = await allPrestamoDB();
-        if(prestamos.length === 0){
-            return res.status(404).json({message: "No se encontraron prestamos"})
+        console.log(prestamos);
+        if (prestamos.length === 0) {
+            return res.status(400).json({ message: "No se encontraron prestamos" });
         }
+        console.log(prestamos);
+        res.status(200).json(prestamos);
+
     } catch (error) {
         console.error("Error al obtener los prestamos", error);
         res.status(500).json({message: "Error al obtener los prestamos"})
