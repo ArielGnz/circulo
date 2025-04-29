@@ -18,7 +18,7 @@ export const getSocios = () => {
 export const getPrestamo = () => {
   return async function (dispatch) {
     const response = await axios.get("/listadoPrestamo");
-    console.log("Datos obtenidos del backend:", response.data);
+    //console.log("Datos obtenidos del backend:", response.data);
     return dispatch({
       type: GET_PRESTAMO,
       payload: response.data,
@@ -44,8 +44,9 @@ export const postPrestamo = (prestamoData) => {
 export const eliminarPrestamo = (id) => {
   return async function (dispatch) {
     try {
-      await axios.delete(`/prestamo/${id}`);
+      const response = await axios.delete(`/prestamos/${id}`);
       dispatch(getPrestamo());
+      return response.data;
     } catch (error) {
       console.error("Error al eliminar prestamo:", error.message);
     }

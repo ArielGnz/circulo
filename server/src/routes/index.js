@@ -12,7 +12,7 @@ router.get("/listadoPrestamo", allPrestamo);
 router.post("/prestamos", crearPrestamo);
 
 // Ruta para ELIMINAR prestamo
-router.delete("/prestamo/:id", eliminarPrestamoHandler);
+router.delete("/prestamos/:id", eliminarPrestamoHandler);
 
 module.exports = router;
 

@@ -28,7 +28,6 @@ const allPrestamo = async (req, res) => {
         if (prestamos.length === 0) {
             return res.status(400).json({ message: "No se encontraron prestamos" });
         }
-        console.log(prestamos);
         res.status(200).json(prestamos);
 
     } catch (error) {

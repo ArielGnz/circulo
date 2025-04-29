@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPrestamo, getSocios } from "../redux/actions";
+import { getPrestamo, getSocios, eliminarPrestamo } from "../redux/actions";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -33,6 +33,10 @@ const PrestamoList = () => {
     dispatch(getPrestamo());
     dispatch(getSocios());
   }, [dispatch]);
+
+  useEffect(() => {
+    handleFiltrar();
+  }, [prestamos]);
 
   const obtenerNombreSocio = (usuarioId) => {
     const socio = socios.find((s) => s.id === usuarioId);
@@ -84,7 +88,9 @@ const PrestamoList = () => {
 
   return (
     <div className="flex flex-col items-center p-8">
-      <h1 className="text-2xl font-bold text-white mb-4">Seleccionar Periodo</h1>
+      <h1 className="text-2xl font-bold text-white mb-4">
+        Seleccionar Periodo
+      </h1>
 
       <div className="flex gap-4 mb-6">
         <select
@@ -134,14 +140,32 @@ const PrestamoList = () => {
                 <th className="px-4 py-2 text-left">Socio</th>
                 <th className="px-4 py-2 text-left">Importe</th>
                 <th className="px-4 py-2 text-left">Fecha</th>
+                <th className="px-4 py-2 text-left">Accion</th>
               </tr>
             </thead>
             <tbody>
               {prestamosFiltrados.map((p) => (
                 <tr key={p.id} className="border-t">
-                  <td className="px-4 py-2">{obtenerNombreSocio(p.usuarioId)}</td>
+                  <td className="px-4 py-2">
+                    {obtenerNombreSocio(p.usuarioId)}
+                  </td>
                   <td className="px-4 py-2">${p.importe}</td>
                   <td className="px-4 py-2">{p.fecha}</td>
+                  <td className="px-4 py-2">
+                    <button
+                      onClick={() => {
+                        if (confirm("¿Estás seguro de eliminar este préstamo?")) {
+                          dispatch(eliminarPrestamo(p.id)).then(() => {
+                            dispatch(getPrestamo());
+                          });
+                        }
+                      }}
+                      
+                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow cursor-pointer"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
