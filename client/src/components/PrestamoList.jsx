@@ -52,7 +52,17 @@ const PrestamoList = () => {
       return (anio ? pAnio === anio : true) && (mes ? pMes === mes : true);
     });
 
-    setPrestamosFiltrados(filtro);
+    const unicosPorSocio = [];
+    const idsAgregados = new Set();
+
+    for(const prestamo of filtro){
+      if(!idsAgregados.has(prestamo.usuarioId)){
+        unicosPorSocio.push(prestamo);
+        idsAgregados.add(prestamo.usuarioId);
+      }
+    }
+
+    setPrestamosFiltrados(unicosPorSocio);
   };
 
   const handleDescargarPDF = () => {
