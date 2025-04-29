@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getPrestamo, getSocios, eliminarPrestamo } from "../redux/actions";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -35,8 +36,10 @@ const PrestamoList = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    handleFiltrar();
-  }, [prestamos]);
+    if (anio || mes) {
+      handleFiltrar();
+    }
+  }, [prestamos, anio, mes]);
 
   const obtenerNombreSocio = (usuarioId) => {
     const socio = socios.find((s) => s.id === usuarioId);
@@ -44,6 +47,12 @@ const PrestamoList = () => {
   };
 
   const handleFiltrar = () => {
+    if (!anio && !mes) {
+      alert("Selecciona al menos un año o mes para filtrar");
+      setPrestamosFiltrados([]);
+      return;
+    }
+
     const filtro = prestamos.filter((p) => {
       const fecha = new Date(p.fecha);
       const pAnio = fecha.getFullYear().toString();
@@ -55,8 +64,8 @@ const PrestamoList = () => {
     const unicosPorSocio = [];
     const idsAgregados = new Set();
 
-    for(const prestamo of filtro){
-      if(!idsAgregados.has(prestamo.usuarioId)){
+    for (const prestamo of filtro) {
+      if (!idsAgregados.has(prestamo.usuarioId)) {
         unicosPorSocio.push(prestamo);
         idsAgregados.add(prestamo.usuarioId);
       }
@@ -103,6 +112,12 @@ const PrestamoList = () => {
       </h1>
 
       <div className="flex gap-4 mb-6">
+        <Link to="/ayuda">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer font-semibold">
+            Ayuda
+          </button>
+        </Link>
+
         <select
           value={anio}
           onChange={(e) => setAnio(e.target.value)}
@@ -164,13 +179,14 @@ const PrestamoList = () => {
                   <td className="px-4 py-2">
                     <button
                       onClick={() => {
-                        if (confirm("¿Estás seguro de eliminar este préstamo?")) {
+                        if (
+                          confirm("¿Estás seguro de eliminar este préstamo?")
+                        ) {
                           dispatch(eliminarPrestamo(p.id)).then(() => {
                             dispatch(getPrestamo());
                           });
                         }
                       }}
-                      
                       className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow cursor-pointer"
                     >
                       Eliminar

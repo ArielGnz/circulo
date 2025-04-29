@@ -12,7 +12,6 @@ const Ayuda = () => {
   const [importes, setImportes] = useState({});
 
   const handleAgregar = async (socio) => {
-    
     const importeRaw = importes[socio.id];
     const importe = parseInt(importeRaw?.trim());
 
@@ -22,25 +21,25 @@ const Ayuda = () => {
     }
 
     const hoy = new Date();
-    const mesActual = `${hoy.getFullYear()}-${(hoy.getMonth() + 1).toString().padStart(2, "0")}`;
-  
+    const mesActual = `${hoy.getFullYear()}-${(hoy.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}`;
+
     const nuevoPrestamo = {
       usuarioId: socio.id,
       importe: parseInt(importe),
       mes: mesActual,
       fecha: hoy.toISOString().split("T")[0],
-      
     };
 
     try {
-        const res = await dispatch(postPrestamo(nuevoPrestamo));
-        alert("Préstamo registrado con éxito");
-        setImportes((prev) => ({ ...prev, [socio.id]: "" }));
-      } catch (error) {
-        console.error("Error al registrar el préstamo:", error);
-        alert("Error al registrar el préstamo");
-      }
-      
+      const res = await dispatch(postPrestamo(nuevoPrestamo));
+      alert("Préstamo registrado con éxito");
+      setImportes((prev) => ({ ...prev, [socio.id]: "" }));
+    } catch (error) {
+      console.error("Error al registrar el préstamo:", error);
+      alert("Error al registrar el préstamo");
+    }
   };
 
   const normalizar = (texto) => {
@@ -83,7 +82,7 @@ const Ayuda = () => {
         />
 
         <Link to="/PrestamoList">
-          <button className="mx-4 text-xl bg-sky-600 rounded-md p-2 text-white font-semibold">
+          <button className="bg-blue-500 text-xl hover:bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer font-semibold">
             Listado
           </button>
         </Link>
