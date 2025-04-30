@@ -199,9 +199,9 @@ const PrestamoList = () => {
 
           <button
             onClick={handleDescargarPDF}
-            className="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow cursor-pointer"
+            className="mt-4 bg-green-500 font-semibold hover:bg-green-600 text-white px-4 py-2 rounded shadow cursor-pointer"
           >
-            Descargar PDF
+            Descargar Listado
           </button>
         </>
       ) : (
