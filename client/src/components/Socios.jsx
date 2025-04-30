@@ -8,6 +8,7 @@ const Socios = () => {
   const socios = useSelector((state) => state.socios);
   const [search, setSearch] = useState("");
   const [filteredSocios, setFilteredSocios] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const normalizar = (texto) => {
     return texto
@@ -16,7 +17,6 @@ const Socios = () => {
       .replace(/[\u0300-\u036f]/g, "");
   };
   
-
   useEffect(() => {
     dispatch(getSocios());
   }, []);
@@ -52,9 +52,9 @@ const Socios = () => {
         />
       </div>
 
-      <table className="table-auto bg-white rounded shadow mt-8 w-full max-w-4xl">
+      <table className="table-auto bg-white rounded-md shadow mt-8 w-full max-w-4xl">
         <thead>
-          <tr className="bg-gray-200">
+          <tr className="bg-blue-400 text-white">
             <th className="px-4 py-2 text-left">DNI</th>
             <th className="px-4 py-2 text-left">Apellido</th>
             <th className="px-4 py-2 text-left">Nombre</th>
