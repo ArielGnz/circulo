@@ -99,7 +99,7 @@ const Ayuda = () => {
           </tr>
         </thead>
         <tbody>
-          {(search ? filteredSocios : socios)
+          {search && filteredSocios.slice(0, 20)
             .slice()
             .sort((a, b) => a.dni - b.dni)
             .map((socio) => (

@@ -35,8 +35,6 @@ const Socios = () => {
     setFilteredSocios(filtro);
   }, [search, socios]);
   
- 
-
   return (
     <div className="flex flex-col justify-center items-center m-16">
       <h1 className="text-4xl font-bold mb-6 text-white">Buscar Socios</h1>
@@ -61,7 +59,7 @@ const Socios = () => {
         </thead>
         <tbody>
           {(search ? filteredSocios : socios)
-            .slice()
+            .slice(0, 20)
             .sort((a, b) => a.dni - b.dni)
             .map((socio) => (
               <tr key={socio.id} className="border-t">
