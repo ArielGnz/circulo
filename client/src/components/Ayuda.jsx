@@ -90,12 +90,12 @@ const Ayuda = () => {
 
       <table className="table-auto bg-white rounded shadow mt-8 w-full max-w-4xl">
         <thead>
-          <tr className="bg-gray-200">
+          <tr className="bg-blue-400 text-white">
             <th className="px-4 py-2 text-left">DNI</th>
             <th className="px-4 py-2 text-left">Apellido</th>
             <th className="px-4 py-2 text-left">Nombre</th>
-            <th className="px-4 py-2 text-left">Importe</th>
-            <th className="px-4 py-2 text-left">Acción</th>
+            <th className="px-4 py-2 text-center mx-auto">Importe</th>
+            <th className="px-4 py-2 text-center">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -107,10 +107,11 @@ const Ayuda = () => {
                 <td className="px-4 py-2">{socio.dni}</td>
                 <td className="px-4 py-2">{socio.apellido}</td>
                 <td className="px-4 py-2">{socio.nombre}</td>
-                <td className="px-4 py-2">
+                <td className="">
                   <input
                     type="text"
                     value={importes[socio.id] || ""}
+                    className="border rounded-md h-[40px]"
                     onChange={(e) =>
                       setImportes((prev) => ({
                         ...prev,
