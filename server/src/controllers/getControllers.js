@@ -6,7 +6,12 @@ const allSociosDB = async () => {
 }
 
 const allPrestamoDB = async () => {
-    const res = await Prestamo.findAll();
+    const res = await Prestamo.findAll({
+        include: {
+            model: Usuario,
+            attributes:["id", "apellido", "nombre", "dni", "cuil", "cbu"],
+        },
+    });
     return res;
 }
 
