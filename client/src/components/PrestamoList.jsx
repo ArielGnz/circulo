@@ -41,9 +41,19 @@ const PrestamoList = () => {
     }
   }, [prestamos, anio, mes]);
 
-  const obtenerNombreSocio = (usuarioId) => {
-    const socio = socios.find((s) => s.id === usuarioId);
-    return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
+  // const obtenerNombreSocio = (usuarioId) => {
+  //   const socio = socios.find((s) => s.id === usuarioId);
+  //   return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
+  // };
+  const obtenerDatosSocio = (prestamo) => {
+    if (!prestamo.Usuario)
+      return { nombreCompleto: "Desconocido", cuil: "", cbu: "" };
+    const { apellido, nombre, cuil, cbu } = prestamo.Usuario;
+    return {
+      nombreCompleto: `${apellido}, ${nombre}`,
+      cuil,
+      cbu,
+    };
   };
 
   const handleFiltrar = () => {
@@ -162,38 +172,41 @@ const PrestamoList = () => {
           <table className="table-auto bg-white rounded shadow w-full max-w-4xl">
             <thead>
               <tr className="bg-gray-200">
+                <th className="px-4 py-2 text-left">Cuil</th>
                 <th className="px-4 py-2 text-left">Socio</th>
                 <th className="px-4 py-2 text-left">Importe</th>
-                <th className="px-4 py-2 text-left">Fecha</th>
+                <th className="px-4 py-2 text-left">Cbu</th>
                 <th className="px-4 py-2 text-left">Accion</th>
               </tr>
             </thead>
             <tbody>
-              {prestamosFiltrados.map((p) => (
-                <tr key={p.id} className="border-t">
-                  <td className="px-4 py-2">
-                    {obtenerNombreSocio(p.usuarioId)}
-                  </td>
-                  <td className="px-4 py-2">${p.importe}</td>
-                  <td className="px-4 py-2">{p.fecha}</td>
-                  <td className="px-4 py-2">
-                    <button
-                      onClick={() => {
-                        if (
-                          confirm("¿Estás seguro de eliminar este préstamo?")
-                        ) {
-                          dispatch(eliminarPrestamo(p.id)).then(() => {
-                            dispatch(getPrestamo());
-                          });
-                        }
-                      }}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow cursor-pointer"
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {prestamosFiltrados.map((p) => {
+                const { nombreCompleto, cuil, cbu } = obtenerDatosSocio(p);
+                return (
+                  <tr key={p.id} className="border-t">
+                    <td className="px-4 py-2">{cuil}</td>
+                    <td className="px-4 py-2">{nombreCompleto}</td>
+                    <td className="px-4 py-2">${p.importe}</td>
+                    <td className="px-4 py-2">{cbu}</td>
+                    <td className="px-4 py-2">
+                      <button
+                        onClick={() => {
+                          if (
+                            confirm("¿Estás seguro de eliminar este préstamo?")
+                          ) {
+                            dispatch(eliminarPrestamo(p.id)).then(() => {
+                              dispatch(getPrestamo());
+                            });
+                          }
+                        }}
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow cursor-pointer"
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
 
