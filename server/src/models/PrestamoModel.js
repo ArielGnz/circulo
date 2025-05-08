@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   const Prestamo = sequelize.define("Prestamo", {
@@ -19,15 +19,16 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Usuarios",
+        model: sequelize.models.Usuario, 
         key: "id",
       },
     },
+
     fecha: {
       type: DataTypes.DATEONLY,
       allowNull: false,
-      defaultValue: DataTypes.NOW
-    }    
+      defaultValue: DataTypes.NOW,
+    },
   });
 
   Prestamo.associate = (models) => {

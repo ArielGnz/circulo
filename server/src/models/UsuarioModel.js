@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     cbu: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     cuil: {

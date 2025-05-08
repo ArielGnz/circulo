@@ -8,7 +8,6 @@ const crearPrestamoDB = async ({mes, importe, usuarioId, fecha}) => {
     
     return nuevoPrestamo;
     
-
 }
 
 module.exports = { crearPrestamoDB };

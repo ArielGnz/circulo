@@ -31,8 +31,8 @@ const allPrestamo = async (req, res) => {
         res.status(200).json(prestamos);
 
     } catch (error) {
-        console.error("Error al obtener los prestamos", error);
-        res.status(500).json({message: "Error al obtener los prestamos"})
+        console.error("Error al obtener los prestamos:", error.message, error.stack);
+        res.status(500).json({message: "Error al obtener los prestamos", error:error.message});
     }
 }
 

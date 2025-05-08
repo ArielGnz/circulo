@@ -33,10 +33,13 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-UsuarioModel(sequelize);
-PrestamoModel(sequelize);
+const { Usuario, Prestamo } = sequelize.models;
+if (Usuario.associate) Usuario.associate(sequelize.models);
+if (Prestamo.associate) Prestamo.associate(sequelize.models);
 
-//const { Usuario, Prestamo } = sequelize.models;
+// UsuarioModel(sequelize);
+// PrestamoModel(sequelize);
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

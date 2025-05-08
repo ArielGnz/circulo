@@ -97,10 +97,10 @@ const PrestamoList = () => {
     const tableRows = [];
 
     prestamosFiltrados.forEach((p) => {
-      const socioNombre = obtenerNombreSocio(p.usuarioId);
+      const { nombreCompleto } = obtenerDatosSocio(p);
       const importe = `$${p.importe}`;
       const fecha = p.fecha;
-      tableRows.push([socioNombre, importe, fecha]);
+      tableRows.push([nombreCompleto, importe, fecha]);
     });
 
     autoTable(doc, {
@@ -181,6 +181,7 @@ const PrestamoList = () => {
             </thead>
             <tbody>
               {prestamosFiltrados.map((p) => {
+                console.log(p);
                 const { nombreCompleto, cuil, cbu } = obtenerDatosSocio(p);
                 return (
                   <tr key={p.id} className="border-t">
