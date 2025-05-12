@@ -122,7 +122,7 @@ const Ayuda = () => {
                 <td className="px-4 py-2">
                   <button
                     onClick={() => handleAgregar(socio)}
-                    className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+                    className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition cursor-pointer"
                   >
                     Agregar
                   </button>
