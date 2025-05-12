@@ -93,14 +93,15 @@ const PrestamoList = () => {
     const doc = new jsPDF();
     doc.text(`Listado de Préstamos ${mes} - ${anio}`, 14, 20);
 
-    const tableColumn = ["Socio", "Importe", "Fecha"];
+    const tableColumn = ["Cuil","Socio", "Importe", "CBU"];
     const tableRows = [];
 
     prestamosFiltrados.forEach((p) => {
+      const { cuil } = obtenerDatosSocio(p);
       const { nombreCompleto } = obtenerDatosSocio(p);
       const importe = `$${p.importe}`;
-      const fecha = p.fecha;
-      tableRows.push([nombreCompleto, importe, fecha]);
+      const { cbu } = obtenerDatosSocio(p);
+      tableRows.push([cuil, nombreCompleto, importe, cbu]);
     });
 
     autoTable(doc, {
