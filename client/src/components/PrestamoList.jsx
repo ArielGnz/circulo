@@ -110,6 +110,10 @@ const PrestamoList = () => {
       startY: 30,
     });
 
+    const total = prestamosFiltrados.reduce((acc, p) => acc + parseFloat(p.importe), 0);
+doc.text(`Total Prestado: $${total.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 10);
+
+
     const nombreMes = meses.find((m) => m.value === mes)?.label || "todos";
     const fileName = `prestamos_${anio || "todos"}-${nombreMes}.pdf`;
 
