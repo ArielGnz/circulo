@@ -93,7 +93,7 @@ const PrestamoList = () => {
     const doc = new jsPDF();
     doc.text(`Listado de Préstamos ${mes} - ${anio}`, 14, 20);
 
-    const tableColumn = ["Cuil","Socio", "Importe", "CBU"];
+    const tableColumn = ["Cuil", "Socio", "Importe", "CBU"];
     const tableRows = [];
 
     prestamosFiltrados.forEach((p) => {
@@ -110,9 +110,15 @@ const PrestamoList = () => {
       startY: 30,
     });
 
-    const total = prestamosFiltrados.reduce((acc, p) => acc + parseFloat(p.importe), 0);
-doc.text(`Total Prestado: $${total.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 10);
-
+    const total = prestamosFiltrados.reduce(
+      (acc, p) => acc + parseFloat(p.importe),
+      0
+    );
+    doc.text(
+      `Total Prestado: $${total.toLocaleString()}`,
+      14,
+      doc.lastAutoTable.finalY + 10
+    );
 
     const nombreMes = meses.find((m) => m.value === mes)?.label || "todos";
     const fileName = `prestamos_${anio || "todos"}-${nombreMes}.pdf`;
@@ -217,9 +223,11 @@ doc.text(`Total Prestado: $${total.toLocaleString()}`, 14, doc.lastAutoTable.fin
           </table>
 
           <div className="mt-4 text-white text-xl font-semibold">
-  Total Prestado: ${prestamosFiltrados.reduce((acc, p) => acc + parseFloat(p.importe), 0).toLocaleString()}
-</div>
-
+            Total Prestado: $
+            {prestamosFiltrados
+              .reduce((acc, p) => acc + parseFloat(p.importe), 0)
+              .toLocaleString()}
+          </div>
 
           <button
             onClick={handleDescargarPDF}
