@@ -4,7 +4,7 @@ const { conn } = require('./src/db.js');
 const syncApiDb = require('./src/controllers/api.js')
 const PORT = process.env.PORT || 3001;
 
-conn.sync({ force: true }).then(async() => {
+conn.sync().then(async() => {
   await syncApiDb();
   
   console.log("DB connect success");
