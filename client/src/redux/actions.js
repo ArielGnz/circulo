@@ -3,7 +3,8 @@ import { POST_PRESTAMO } from "./action-types";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "https://radiant-communication-production.up.railway.app/";
+axios.defaults.baseURL = "circulo.railway.internal";
+//axios.defaults.baseURL = "https://radiant-communication-production.up.railway.app/";
 //axios.defaults.baseURL = "http://localhost:3001";
 
 export const getSocios = () => {
