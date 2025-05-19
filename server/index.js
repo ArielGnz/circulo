@@ -9,8 +9,8 @@ conn.sync().then(async() => {
   
   console.log("DB connect success");
   
-  server.listen(PORT, () => {
+  server.listen(PORT, '0.0.0.0' , () => {
    
-    console.log(`Server listening on port ${PORT}`);
+    console.log(`Server listening on port://0.0.0.0: ${PORT}`);
   });
 }).catch(error => console.error(error));
