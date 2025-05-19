@@ -6,8 +6,9 @@ import axios from "axios";
 //axios.defaults.baseURL = "circulo.railway.internal";
 //axios.defaults.baseURL = "https://radiant-communication-production.up.railway.app/";
 //axios.defaults.baseURL = "circulo-production.up.railway.app";
+axios.defaults.baseURL="circulo-production-e998.up.railway.app";
 
-axios.defaults.baseURL = "http://localhost:3001";
+//axios.defaults.baseURL = "http://localhost:3001";
 
 export const getSocios = () => {
   return async function (dispatch) {
