@@ -1113,13 +1113,6 @@
     "nombre": "VERONICA TERESA"
   },
   {
-    "dni": "32718386",
-    "cuil": "23327183869",
-    "cbu": "0",
-    "apellido": "ALARCON",
-    "nombre": "VIRGILIO JUAN RAMON"
-  },
-  {
     "dni": "35061296",
     "cuil": "20350612964",
     "cbu": "0",
@@ -1160,13 +1153,6 @@
     "cbu": "940099366001102000000",
     "apellido": "ALCARAZ",
     "nombre": "CARMEN ESTELINA"
-  },
-  {
-    "dni": "31579324",
-    "cuil": "27315793241",
-    "cbu": "940099366001289000000",
-    "apellido": "ALCARAZ",
-    "nombre": "ERICA GABRIELA"
   },
   {
     "dni": "14861690",
@@ -3043,6 +3029,13 @@
     "cbu": "940013966000481000000",
     "apellido": "AYALA",
     "nombre": "PEDRO MARTIN"
+  },
+  {
+    "dni": "29725406",
+    "cuil": "20297254066",
+    "cbu": "0",
+    "apellido": "AYALA",
+    "nombre": "RAIMUNDO FACUNDO"
   },
   {
     "dni": "13803487",
@@ -5670,6 +5663,13 @@
     "nombre": "MANUEL OSVALDO"
   },
   {
+    "dni": "28609302",
+    "cuil": "20286093028",
+    "cbu": "0",
+    "apellido": "CABRERA",
+    "nombre": "MARIO ALBERTO"
+  },
+  {
     "dni": "17742745",
     "cuil": "23177427454",
     "cbu": "940013966000635000000",
@@ -6377,6 +6377,13 @@
     "nombre": "MARIA DACIL"
   },
   {
+    "dni": "35034642",
+    "cuil": "27350346428",
+    "cbu": "940006166002936000000",
+    "apellido": "CARDOZO",
+    "nombre": "MARINA GRISELDA"
+  },
+  {
     "dni": "17905904",
     "cuil": "20179059046",
     "cbu": "940012266000351000000",
@@ -6697,6 +6704,13 @@
     "cbu": "0",
     "apellido": "CASTILLO",
     "nombre": "LUCAS EMMANUEL"
+  },
+  {
+    "dni": "29457598",
+    "cuil": "20294575988",
+    "cbu": "940099366000509000000",
+    "apellido": "CASTILLO",
+    "nombre": "PABLO LEANDRO"
   },
   {
     "dni": "18116612",
@@ -7119,6 +7133,13 @@
     "nombre": "SANTA"
   },
   {
+    "dni": "31063926",
+    "cuil": "20310639266",
+    "cbu": "0",
+    "apellido": "CHAVES",
+    "nombre": "CARLOS ALBERTO"
+  },
+  {
     "dni": "13954484",
     "cuil": "27139544841",
     "cbu": "0",
@@ -7208,6 +7229,13 @@
     "cbu": "0",
     "apellido": "COHENE",
     "nombre": "MARIA CRISTINA"
+  },
+  {
+    "dni": "14239741",
+    "cuil": "20142397413",
+    "cbu": "0",
+    "apellido": "COLDANI",
+    "nombre": "RUBEN GUSTAVO"
   },
   {
     "dni": "38871876",
@@ -10108,13 +10136,6 @@
     "nombre": "ANA MARIA"
   },
   {
-    "dni": "33126237",
-    "cuil": "23331262374",
-    "cbu": "940006166000675000000",
-    "apellido": "FERNANDEZ",
-    "nombre": "ANALIA"
-  },
-  {
     "dni": "16832356",
     "cuil": "20168323566",
     "cbu": "940013966000321000000",
@@ -10267,6 +10288,13 @@
     "cbu": "940005466004389000000",
     "apellido": "FERNANDEZ",
     "nombre": "DAIANA ITATI"
+  },
+  {
+    "dni": "37064480",
+    "cuil": "27370644808",
+    "cbu": "0",
+    "apellido": "FERNANDEZ",
+    "nombre": "DANIELA ISABEL"
   },
   {
     "dni": "5117649",
@@ -10463,6 +10491,13 @@
     "cbu": "940099366000462000000",
     "apellido": "FERNANDEZ",
     "nombre": "JUAN EDUARDO"
+  },
+  {
+    "dni": "29792750",
+    "cuil": "20297927508",
+    "cbu": "940007866000514000000",
+    "apellido": "FERNANDEZ",
+    "nombre": "JUAN JOSE"
   },
   {
     "dni": "31971855",
@@ -10685,13 +10720,6 @@
     "dni": "20511443",
     "cuil": "20205114433",
     "cbu": "940013966000378000000",
-    "apellido": "FERNANDEZ",
-    "nombre": "RAMON"
-  },
-  {
-    "dni": "22019567",
-    "cuil": "20220195679",
-    "cbu": "940099366000402000000",
     "apellido": "FERNANDEZ",
     "nombre": "RAMON"
   },
@@ -14189,13 +14217,6 @@
     "nombre": "MAFFEI MIRIAN ISABEL"
   },
   {
-    "dni": "33338234",
-    "cuil": "20333382343",
-    "cbu": "0",
-    "apellido": "GONZALEZ",
-    "nombre": "MARCELO EMANUEL"
-  },
-  {
     "dni": "12440633",
     "cuil": "0",
     "cbu": "0",
@@ -14987,6 +15008,13 @@
     "nombre": "JORGE OSVALDO"
   },
   {
+    "dni": "41412822",
+    "cuil": "20414128220",
+    "cbu": "0",
+    "apellido": "INSAURRALDE",
+    "nombre": "JOSÉ MAXIMILIANO"
+  },
+  {
     "dni": "17558360",
     "cuil": "20175583603",
     "cbu": "940002366000341000000",
@@ -15139,13 +15167,6 @@
     "cbu": "0",
     "apellido": "JARA",
     "nombre": "RAMON MERCEDES"
-  },
-  {
-    "dni": "30568429",
-    "cuil": "20305684296",
-    "cbu": "940014666001872000000",
-    "apellido": "JARA",
-    "nombre": "RITO VALENTIN"
   },
   {
     "dni": "33423956",
@@ -15440,6 +15461,13 @@
     "cbu": "0",
     "apellido": "LEDESMA",
     "nombre": "GLADIS GRISELDA"
+  },
+  {
+    "dni": "32529099",
+    "cuil": "23325290994",
+    "cbu": "0",
+    "apellido": "LEDESMA",
+    "nombre": "LIDIA HIPOLITA GREGORIA"
   },
   {
     "dni": "35034583",
@@ -15923,6 +15951,13 @@
     "cbu": "0",
     "apellido": "LEZCANO",
     "nombre": "DARIO GERMAN"
+  },
+  {
+    "dni": "31883448",
+    "cuil": "20318834483",
+    "cbu": "0",
+    "apellido": "LEZCANO",
+    "nombre": "DIEGO ARMANDO"
   },
   {
     "dni": "11941663",
@@ -16856,13 +16891,6 @@
     "nombre": "JAVIER SERAFIN"
   },
   {
-    "dni": "5682687",
-    "cuil": "23056826874",
-    "cbu": "940021466000585000000",
-    "apellido": "MACHADO",
-    "nombre": "PERLA IRIS"
-  },
-  {
     "dni": "20089162",
     "cuil": "27200891622",
     "cbu": "940009266001128000000",
@@ -17514,6 +17542,13 @@
     "nombre": "JULIO ENRIQUE"
   },
   {
+    "dni": "29197600",
+    "cuil": "20291976000",
+    "cbu": "0",
+    "apellido": "MARQUES",
+    "nombre": "VIANA CRISTIAN DARIO"
+  },
+  {
     "dni": "12867101",
     "cuil": "27128671019",
     "cbu": "940099366000995000000",
@@ -18030,6 +18065,13 @@
     "cbu": "940017766000388000000",
     "apellido": "MEDINA",
     "nombre": "JORGE GREGORIO"
+  },
+  {
+    "dni": "37885939",
+    "cuil": "20378859396",
+    "cbu": "0",
+    "apellido": "MEDINA",
+    "nombre": "JOSE ANTONIO"
   },
   {
     "dni": "11109819",
@@ -19225,7 +19267,7 @@
     "dni": "27900482",
     "cuil": "20279004826",
     "cbu": "940099366003079000000",
-    "apellido": "MONTA¥EZ",
+    "apellido": "MONTAÑEZ",
     "nombre": "RAMON MATIAS"
   },
   {
@@ -20132,13 +20174,6 @@
     "nombre": "MARCELINO"
   },
   {
-    "dni": "27295512",
-    "cuil": "27272955129",
-    "cbu": "940099366001249000000",
-    "apellido": "NAVARRO",
-    "nombre": "MIRYAN SUSANA"
-  },
-  {
     "dni": "21827464",
     "cuil": "20218274642",
     "cbu": "940099366000396000000",
@@ -20207,13 +20242,6 @@
     "cbu": "0",
     "apellido": "NIELLA",
     "nombre": "RAFAELA"
-  },
-  {
-    "dni": "38235848",
-    "cuil": "27382358487",
-    "cbu": "0",
-    "apellido": "NIS",
-    "nombre": "CYNTHIA GISELLA"
   },
   {
     "dni": "14828359",
@@ -21714,13 +21742,6 @@
     "nombre": "JORGE LUIS"
   },
   {
-    "dni": "10379458",
-    "cuil": "27103794582",
-    "cbu": "0",
-    "apellido": "PACHECO",
-    "nombre": "ALBA GLADYS"
-  },
-  {
     "dni": "29642147",
     "cuil": "20296421473",
     "cbu": "940007866000511000000",
@@ -22755,6 +22776,13 @@
     "cbu": "0",
     "apellido": "PEREZ",
     "nombre": "YANEL ANABELA"
+  },
+  {
+    "dni": "38236524",
+    "cuil": "27382365246",
+    "cbu": "0",
+    "apellido": "PEREZ",
+    "nombre": "YANINA BELEN"
   },
   {
     "dni": "21572380",
@@ -24141,6 +24169,13 @@
     "cbu": "940099366000537000000",
     "apellido": "RAMIREZ",
     "nombre": "MENDEZ MATIAS JUAN GABRIEL"
+  },
+  {
+    "dni": "33126434",
+    "cuil": "20331264343",
+    "cbu": "0",
+    "apellido": "RAMIREZ",
+    "nombre": "MIGUEL BERNARDINO"
   },
   {
     "dni": "20978370",
@@ -26397,13 +26432,6 @@
     "nombre": "MARIO FABIAN"
   },
   {
-    "dni": "5703360",
-    "cuil": "27057033601",
-    "cbu": "940099366000872000000",
-    "apellido": "ROMERO",
-    "nombre": "MARTA BEATRIZ"
-  },
-  {
     "dni": "22663003",
     "cuil": "27226630037",
     "cbu": "940099366001178000000",
@@ -26682,6 +26710,13 @@
     "cbu": "940007866006124000000",
     "apellido": "ROSADO",
     "nombre": "LUSBARAN JAVIER ANDRES"
+  },
+  {
+    "dni": "28027312",
+    "cuil": "20280273121",
+    "cbu": "0",
+    "apellido": "ROSAS",
+    "nombre": "NESTOR FABIAN"
   },
   {
     "dni": "30517753",
@@ -28112,6 +28147,13 @@
     "nombre": "BERNARDO"
   },
   {
+    "dni": "31064549",
+    "cuil": "20310645495",
+    "cbu": "0",
+    "apellido": "SEGOVIA",
+    "nombre": "CARLOS ALBERTO"
+  },
+  {
     "dni": "27429037",
     "cuil": "0",
     "cbu": "0",
@@ -28882,13 +28924,6 @@
     "nombre": "BENIGNO RICARDO"
   },
   {
-    "dni": "32115008",
-    "cuil": "20321150080",
-    "cbu": "0",
-    "apellido": "SOSA",
-    "nombre": "CARLOS ALBERTO"
-  },
-  {
     "dni": "13825974",
     "cuil": "           ",
     "cbu": "0",
@@ -29636,13 +29671,6 @@
     "cbu": "940099366000243000000",
     "apellido": "TAYBO",
     "nombre": "CESAR ANTONIO"
-  },
-  {
-    "dni": "13987678",
-    "cuil": "20139876785",
-    "cbu": "940003066000266000000",
-    "apellido": "TAYLOR",
-    "nombre": "FELIX CLAUDIO"
   },
   {
     "dni": "34142816",
@@ -30457,11 +30485,25 @@
     "nombre": "RAMON ANTONIO"
   },
   {
+    "dni": "30929002",
+    "cuil": "20309290020",
+    "cbu": "0",
+    "apellido": "VALLEJOS",
+    "nombre": "VICTOR"
+  },
+  {
     "dni": "11146249",
     "cuil": "20111462497",
     "cbu": "940099366000192000000",
     "apellido": "VALLEJOS",
     "nombre": "VICTOR HUGO"
+  },
+  {
+    "dni": "40261358",
+    "cuil": "20402613581",
+    "cbu": "0",
+    "apellido": "VALLEJOS",
+    "nombre": "WALTER DANIEL"
   },
   {
     "dni": "5392004",
@@ -30651,6 +30693,13 @@
     "cbu": "940010866000303000000",
     "apellido": "VARGAS",
     "nombre": "ROBERTO"
+  },
+  {
+    "dni": "29955863",
+    "cuil": "20299558631",
+    "cbu": "0",
+    "apellido": "VARGAS",
+    "nombre": "SOTELO OSVALDO JORGE ANTONIO"
   },
   {
     "dni": "17369321",
