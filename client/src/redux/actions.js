@@ -23,7 +23,7 @@ export const getSocios = () => {
 export const getPrestamo = () => {
   return async function (dispatch) {
     const response = await axios.get("/listadoPrestamo");
-    //console.log("Datos obtenidos del backend:", response.data);
+    //console.log("Datos obtenidos desde backend:", response.data);
     return dispatch({
       type: GET_PRESTAMO,
       payload: response.data,
