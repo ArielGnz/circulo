@@ -16,6 +16,7 @@ const Home = () => {
     //   navigate("/ayuda");
     // } else {
     //   alert("contraseña incorrecta");
+    // setams contraseña
     // }
     setShowModal(true);
   };
