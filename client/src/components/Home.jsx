@@ -72,7 +72,7 @@ const Home = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
             <h2 className="text-xl font-semibold mb-4">
-              Ingrese la contraseña
+              Ingrese la Contraseña
             </h2>
             <input
               ref={inputRef}

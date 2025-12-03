@@ -44,7 +44,10 @@ const PrestamoList = () => {
   // const obtenerNombreSocio = (usuarioId) => {
   //   const socio = socios.find((s) => s.id === usuarioId);
   //   return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
+  // funcion sin ocupar
   // };
+
+
   const obtenerDatosSocio = (prestamo) => {
     if (!prestamo.Usuario)
       return { nombreCompleto: "Desconocido", cuil: "", cbu: "" };
@@ -144,7 +147,7 @@ const PrestamoList = () => {
           onChange={(e) => setAnio(e.target.value)}
           className="px-4 py-2 rounded bg-white text-black shadow "
         >
-          <option value="">Seleccionar año</option>
+          <option value="">Seleccionar Año</option>
           {anios.map((a) => (
             <option key={a} value={a}>
               {a}
