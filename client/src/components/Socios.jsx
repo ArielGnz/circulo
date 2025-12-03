@@ -9,11 +9,14 @@ const Socios = () => {
   const [search, setSearch] = useState("");
   const [filteredSocios, setFilteredSocios] = useState([]);
 
+
+  //funcion de normalizar
   const normalizar = (texto) => {
     return texto
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+      
   };
   
   useEffect(() => {
