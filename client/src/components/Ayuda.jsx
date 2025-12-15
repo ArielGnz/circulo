@@ -12,7 +12,7 @@ const Ayuda = () => {
   const [importes, setImportes] = useState({});
 
 
-  //funcion agregar ayuda
+  //funcion  ayuda
   const handleAgregar = async (socio) => {
     const importeRaw = importes[socio.id];
     const importe = parseInt(importeRaw?.trim());
