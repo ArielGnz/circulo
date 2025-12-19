@@ -10,7 +10,7 @@ const Socios = () => {
   const [filteredSocios, setFilteredSocios] = useState([]);
 
 
-  //funcion de normalizar
+  //funcion
   const normalizar = (texto) => {
     return texto
       .toLowerCase()

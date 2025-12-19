@@ -11,7 +11,7 @@ const Home = () => {
   const [inputPassword, setInputPassword] = useState("");
 
 
-  //funcion ayuda
+  //funcion ay
   const handleAyuda = () => {
     // const ingreso = prompt("ingrese contraseña");
     // if(ingreso === password){
