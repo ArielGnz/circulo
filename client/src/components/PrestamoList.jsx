@@ -47,7 +47,6 @@ const PrestamoList = () => {
   // probando lines
   //
   //
-  //
   // };
 
 
