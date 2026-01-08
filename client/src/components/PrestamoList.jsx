@@ -46,6 +46,10 @@ const PrestamoList = () => {
   //   return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
   // probando lines ----
   //-
+  //
+  //
+  //
+  //
   
   //
   // };
