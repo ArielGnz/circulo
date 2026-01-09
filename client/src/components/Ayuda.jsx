@@ -12,12 +12,6 @@ const Ayuda = () => {
   const [importes, setImportes] = useState({});
 
 
-  //funcion  ayuda
-  //
-  // nuevas lineas
-  //
-  //
-  //aca
   const handleAgregar = async (socio) => {
     const importeRaw = importes[socio.id];
     const importe = parseInt(importeRaw?.trim());
