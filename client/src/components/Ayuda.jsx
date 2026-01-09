@@ -14,6 +14,8 @@ const Ayuda = () => {
 
   //funcion  ayuda
   //
+  // nuevas lineas
+  //
   //
   //aca
   const handleAgregar = async (socio) => {
