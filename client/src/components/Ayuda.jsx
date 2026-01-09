@@ -13,6 +13,9 @@ const Ayuda = () => {
 
 
   //funcion  ayuda
+  //
+  //
+  //aca
   const handleAgregar = async (socio) => {
     const importeRaw = importes[socio.id];
     const importe = parseInt(importeRaw?.trim());
