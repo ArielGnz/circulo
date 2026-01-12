@@ -11,6 +11,9 @@ const Socios = () => {
 
 
   //funcion
+  //
+  //
+  //
   const normalizar = (texto) => {
     return texto
       .toLowerCase()
