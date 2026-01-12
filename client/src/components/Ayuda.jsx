@@ -43,6 +43,9 @@ const Ayuda = () => {
   };
 
   // Funcion 
+  //
+  //
+  //
   const normalizar = (texto) => {
     return texto
       .toLowerCase()
