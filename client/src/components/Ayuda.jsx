@@ -43,8 +43,7 @@ const Ayuda = () => {
   };
 
   // Funcion 
-  //
-  //
+
   
 
   const normalizar = (texto) => {
