@@ -9,10 +9,6 @@ const Socios = () => {
   const [search, setSearch] = useState("");
   const [filteredSocios, setFilteredSocios] = useState([]);
 
-
-  //funcion
-
-  //
   const normalizar = (texto) => {
     return texto
       .toLowerCase()
