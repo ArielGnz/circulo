@@ -41,11 +41,6 @@ const Ayuda = () => {
       alert("Error al registrar el préstamo");
     }
   };
-
-  // Funcion 
-//
-//
-
   
 
   const normalizar = (texto) => {
