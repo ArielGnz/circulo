@@ -11,6 +11,9 @@ const Ayuda = () => {
   const [filteredSocios, setFilteredSocios] = useState([]);
   const [importes, setImportes] = useState({});
 
+//
+//
+//
 
   const handleAgregar = async (socio) => {
     const importeRaw = importes[socio.id];
