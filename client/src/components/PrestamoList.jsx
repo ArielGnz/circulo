@@ -45,9 +45,6 @@ const PrestamoList = () => {
   //   const socio = socios.find((s) => s.id === usuarioId);
   //   return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
   // };
- //
- //
- // 
 
   const obtenerDatosSocio = (prestamo) => {
     if (!prestamo.Usuario)
