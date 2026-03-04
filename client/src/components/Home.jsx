@@ -10,8 +10,6 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [inputPassword, setInputPassword] = useState("");
 
-
-  //funcion ay
   const handleAyuda = () => {
     // const ingreso = prompt("ingrese contraseña");
     // if(ingreso === password){
