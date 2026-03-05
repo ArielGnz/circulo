@@ -21,9 +21,6 @@ const Home = () => {
     //
     setShowModal(true);
   };
-
-  //
-  //
   
   const handlePasswordSubmit = () => {
     if (inputPassword === password) {
