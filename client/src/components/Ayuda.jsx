@@ -68,6 +68,11 @@ const Ayuda = () => {
     setFilteredSocios(filtro);
   }, [search, socios]);
 
+  //
+  //
+  //
+  //
+
   return (
     <div className="flex flex-col justify-center items-center m-16">
       <h1 className="text-4xl font-bold mb-6 text-white">Buscar Socios</h1>

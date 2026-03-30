@@ -47,6 +47,8 @@ const PrestamoList = () => {
   // };
   //
   //
+  //
+  //
   
   
   const obtenerDatosSocio = (prestamo) => {
