@@ -69,9 +69,7 @@ const Ayuda = () => {
   }, [search, socios]);
 
   //
-  //
-  //
-  //
+
 
   return (
     <div className="flex flex-col justify-center items-center m-16">
