@@ -41,6 +41,8 @@ const Ayuda = () => {
     }
   };
   
+//
+//
 
   const normalizar = (texto) => {
     return texto
