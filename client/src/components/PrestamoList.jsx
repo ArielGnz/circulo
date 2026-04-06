@@ -46,10 +46,7 @@ const PrestamoList = () => {
   //   return socio ? `${socio.apellido}, ${socio.nombre}` : "Desconocido";
   // };
   //
-  //
-  //
-  //
-  
+ 
   
   const obtenerDatosSocio = (prestamo) => {
     if (!prestamo.Usuario)
