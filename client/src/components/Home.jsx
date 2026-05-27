@@ -1,6 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoNegro from "../assets/logoNegro.jpg";
+import { Button, buttonClassName } from "./ui/Button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/Card";
+import { Input } from "./ui/Input";
+import { Modal, ModalActions } from "./ui/Modal";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,19 +14,10 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [inputPassword, setInputPassword] = useState("");
 
-
   const handleAyuda = () => {
-    // const ingreso = prompt("ingrese contraseña");
-    // if(ingreso === password){
-    //   navigate("/ayuda");
-    // } else {
-    //   alert("contraseña incorrecta");
-    // setams contraseña
-    // }
-    
     setShowModal(true);
   };
-  
+
   const handlePasswordSubmit = () => {
     if (inputPassword === password) {
       setShowModal(false);
@@ -41,74 +36,65 @@ const Home = () => {
   }, [showModal]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex flex-col justify-center border-2 rounded-md border-gray-400 max-w-md mx-auto">
-        <div className="flex justify-center my-4">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 py-10 sm:px-6">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,oklch(42%_0.11_185/0.12),transparent_55%)]" />
+
+      <Card className="w-full max-w-md animate-slide-up">
+        <CardHeader className="items-center text-center">
           <img
             src={logoNegro}
-            alt="Logo"
-            className="h-[250px] object-contain"
+            alt="Logo Círculo"
+            className="mx-auto h-40 w-auto object-contain sm:h-52"
           />
-        </div>
+          <CardTitle className="mt-2">Círculo</CardTitle>
+          <CardDescription>
+            Gestión de socios y ayudas económicas
+          </CardDescription>
+        </CardHeader>
 
-        <div className="m-4 mx-auto">
-          <Link to="/socios">
-            <div className="m-2 w-[240px] border-2 mx-10 font-bold rounded-md bg-gray-300 hover:bg-gray-400 text-center transform transition duration-200 hover:scale-105 hover:-translate-y-1">
-              <h1 className="text-gray-600 hover:text-white px-10 text-xl py-4">
-                SOCIOS
-              </h1>
-            </div>
-          </Link>
-
-          <button
-            onClick={handleAyuda}
-            className="m-2 w-[240px] border-2 mx-10 font-bold rounded-md bg-gray-300 hover:bg-gray-400 text-center transform transition duration-200 hover:scale-105 hover:-translate-y-1"
+        <CardContent className="flex flex-col gap-3 sm:gap-4">
+          <Link
+            to="/socios"
+            className={buttonClassName({ variant: "default", size: "lg", className: "w-full" })}
           >
-            <h1 className="text-gray-600 hover:text-white px-10 text-xl py-4">
-              AYUDA
-            </h1>
-          </button>
-        </div>
-      </div>
+            Socios
+          </Link>
+          <Button size="lg" className="w-full" variant="outline" onClick={handleAyuda}>
+            Ayuda
+          </Button>
+        </CardContent>
+      </Card>
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-            <h2 className="text-xl font-semibold mb-4">
-              Ingrese la Contraseña
-            </h2>
-            <input
-              ref={inputRef}
-              type="password"
-              className="w-full border border-gray-300 rounded px-3 py-2 mb-4"
-              value={inputPassword}
-              onChange={(e) => setInputPassword(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handlePasswordSubmit();
-                }
-              }}
-            />
-            <div className="flex justify-between">
-              <button
-                onClick={handlePasswordSubmit}
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-              >
-                Ingresar
-              </button>
-              <button
-                onClick={() => {
-                  setShowModal(false);
-                  setInputPassword("");
-                }}
-                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-              >
-                Cancelar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+        open={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setInputPassword("");
+        }}
+        title="Ingrese la contraseña"
+        footer={
+          <ModalActions
+            confirmLabel="Ingresar"
+            cancelLabel="Cancelar"
+            onConfirm={handlePasswordSubmit}
+            onCancel={() => {
+              setShowModal(false);
+              setInputPassword("");
+            }}
+          />
+        }
+      >
+        <Input
+          ref={inputRef}
+          type="password"
+          placeholder="Contraseña"
+          value={inputPassword}
+          onChange={(e) => setInputPassword(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handlePasswordSubmit();
+          }}
+        />
+      </Modal>
     </div>
   );
 };

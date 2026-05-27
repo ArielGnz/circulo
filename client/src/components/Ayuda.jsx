@@ -1,8 +1,19 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSocios, postPrestamo } from "../redux/actions";
 import { Link } from "react-router-dom";
+import { Button, buttonClassName } from "./ui/Button";
+import { Input } from "./ui/Input";
+import { Card, CardContent } from "./ui/Card";
+import {
+  PageLayout,
+  DataTable,
+  Table,
+  TableHead,
+  TableRow,
+  Th,
+  Td,
+} from "./ui/PageLayout";
 
 const Ayuda = () => {
   const dispatch = useDispatch();
@@ -33,16 +44,13 @@ const Ayuda = () => {
     };
 
     try {
-      const res = await dispatch(postPrestamo(nuevoPrestamo));
+      await dispatch(postPrestamo(nuevoPrestamo));
       setImportes((prev) => ({ ...prev, [socio.id]: "" }));
     } catch (error) {
       console.error("Error al registrar el préstamo:", error);
       alert("Error al registrar el préstamo");
     }
   };
-  
-//
-//
 
   const normalizar = (texto) => {
     return texto
@@ -53,7 +61,7 @@ const Ayuda = () => {
 
   useEffect(() => {
     dispatch(getSocios());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const termino = normalizar(search).split(" ").filter(Boolean);
@@ -70,71 +78,108 @@ const Ayuda = () => {
     setFilteredSocios(filtro);
   }, [search, socios]);
 
+  const lista =
+    search &&
+    filteredSocios
+      .slice()
+      .sort((a, b) => a.dni - b.dni)
+      .slice(0, 20);
+
   return (
-    <div className="flex flex-col justify-center items-center m-16">
-      <h1 className="text-4xl font-bold mb-6 text-white">Buscar Socios</h1>
+    <PageLayout
+      title="Registrar ayuda"
+      description="Buscá un socio y cargá el importe del préstamo del mes."
+      showHome={false}
+    >
+      <Card className="mb-6">
+        <CardContent className="flex flex-col gap-4 pt-6 sm:flex-row sm:items-end">
+          <div className="min-w-0 flex-1">
+            <label htmlFor="buscar-ayuda" className="mb-2 block text-sm font-medium">
+              Buscar socio
+            </label>
+            <Input
+              id="buscar-ayuda"
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Nombre, apellido o DNI"
+            />
+          </div>
+          <Link
+            to="/prestamoList"
+            className={buttonClassName({ variant: "secondary", className: "w-full sm:w-auto" })}
+          >
+            Ver listado
+          </Link>
+        </CardContent>
+      </Card>
 
-      <div className="flex mb-4">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Ingrese nombre o DNI"
-          className="border bg-white mx-2 text-xl rounded-md px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-300"
-        />
-
-        <Link to="/PrestamoList">
-          <button className="bg-blue-500 text-xl hover:bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer font-semibold">
-            Listado
-          </button>
-        </Link>
-      </div>
-
-      <table className="table-auto bg-white rounded shadow mt-8 w-full max-w-4xl">
-        <thead>
-          <tr className="bg-blue-400 text-white">
-            <th className="px-4 py-2 text-left">DNI</th>
-            <th className="px-4 py-2 text-left">Apellido</th>
-            <th className="px-4 py-2 text-left">Nombre</th>
-            <th className="px-4 py-2 text-center mx-auto">Importe</th>
-            <th className="px-4 py-2 text-center">Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          {search && filteredSocios.slice(0, 20)
-            .slice()
-            .sort((a, b) => a.dni - b.dni)
-            .map((socio) => (
-              <tr key={socio.id} className="border-t">
-                <td className="px-4 py-2">{socio.dni}</td>
-                <td className="px-4 py-2">{socio.apellido}</td>
-                <td className="px-4 py-2">{socio.nombre}</td>
-                <td className="">
-                  <input
-                    type="text"
-                    value={importes[socio.id] || ""}
-                    className="border rounded-md h-[40px]"
-                    onChange={(e) =>
-                      setImportes((prev) => ({
-                        ...prev,
-                        [socio.id]: e.target.value,
-                      }))
-                    }
-                  />
-                </td>
-                <td className="px-4 py-2">
-                  <button
-                    onClick={() => handleAgregar(socio)}
-                    className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition cursor-pointer"
-                  >
-                    Agregar
-                  </button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+      {!search ? (
+        <p className="rounded-lg border border-dashed border-border bg-muted/40 px-4 py-8 text-center text-sm text-muted-foreground">
+          Escribí en el buscador para ver socios y cargar importes.
+        </p>
+      ) : (
+        <DataTable>
+          <Table>
+            <TableHead>
+              <TableRow className="border-0 hover:bg-transparent">
+                <Th>DNI</Th>
+                <Th>Apellido</Th>
+                <Th className="hidden sm:table-cell">Nombre</Th>
+                <Th>Importe</Th>
+                <Th className="text-center">Acción</Th>
+              </TableRow>
+            </TableHead>
+            <tbody>
+              {lista.length === 0 ? (
+                <TableRow>
+                  <Td colSpan={5} className="text-center text-muted-foreground">
+                    No se encontraron socios
+                  </Td>
+                </TableRow>
+              ) : (
+                lista.map((socio) => (
+                  <TableRow key={socio.id}>
+                    <Td className="font-mono text-xs sm:text-sm">{socio.dni}</Td>
+                    <Td>
+                      <span className="font-medium">{socio.apellido}</span>
+                      <span className="block text-xs text-muted-foreground sm:hidden">
+                        {socio.nombre}
+                      </span>
+                    </Td>
+                    <Td className="hidden sm:table-cell">{socio.nombre}</Td>
+                    <Td>
+                      <Input
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="Monto"
+                        value={importes[socio.id] || ""}
+                        className="min-w-[5.5rem] max-w-[8rem]"
+                        onChange={(e) =>
+                          setImportes((prev) => ({
+                            ...prev,
+                            [socio.id]: e.target.value,
+                          }))
+                        }
+                      />
+                    </Td>
+                    <Td className="text-center">
+                      <Button
+                        variant="success"
+                        size="sm"
+                        onClick={() => handleAgregar(socio)}
+                      >
+                        Agregar
+                      </Button>
+                    </Td>
+                  </TableRow>
+                ))
+              )}
+            </tbody>
+          </Table>
+        </DataTable>
+      )}
+    </PageLayout>
   );
 };
 
