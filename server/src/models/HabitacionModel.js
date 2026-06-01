@@ -17,5 +17,11 @@ module.exports = (sequelize) => {
             defaultValue: 'disponible',
         },
     });
+
+    Habitacion.associate = (models) => {
+        Habitacion.hasMany(models.RegistroEstadia, { foreignKey: "habitacionId"});
+    };
+
+    return Habitacion;
 };
 
