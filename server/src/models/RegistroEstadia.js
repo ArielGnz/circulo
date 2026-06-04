@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    // --- DATOS DE ENTRADA ---
+    // --- DATOS DE ENTRADA -
     fechaHoraEntrada: {
       type: DataTypes.DATE, // Reemplaza día, mes, año y hora en un solo campo
       allowNull: false,
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       defaultValue: true,
     },
     
-    // --- DATOS DEL ACOMPAÑANTE (Si no es el titular) ---
+    //  DATOS DEL ACOMPAÑANTE (Si no es el titular) 
     // Nota: Si viaja el titular solo, estos campos quedan vacíos
     acompananteDni: {
       type: DataTypes.STRING,
