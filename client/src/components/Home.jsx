@@ -18,6 +18,8 @@ const Home = () => {
     setShowModal(true);
   };
 
+  //nuevo function password
+
   const handlePasswordSubmit = () => {
     if (inputPassword === password) {
       setShowModal(false);

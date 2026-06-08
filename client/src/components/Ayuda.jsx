@@ -24,6 +24,7 @@ const Ayuda = () => {
 
   // new lines
   //
+  
   const handleAgregar = async (socio) => {
     const importeRaw = importes[socio.id];
     const importe = parseInt(importeRaw?.trim());
