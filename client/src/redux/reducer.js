@@ -1,4 +1,4 @@
-import { GET_PRESTAMO, GET_SOCIOS } from "./action-types";
+import { GET_PRESTAMO, GET_SOCIOS, GET_HABITACIONES, GET_REGISTRO_ESTADIA, } from "./action-types";
 
 const initialState = {
   socios: [],
@@ -20,7 +20,17 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         prestamos: payload,
-      }
+      };
+
+    case GET_HABITACIONES:
+      return {
+        ...state, habitaciones: payload
+      };
+
+    case GET_REGISTRO_ESTADIA:
+      return {
+        ...state, registrosEstadia: payload
+      };
 
     default:
       return state;
