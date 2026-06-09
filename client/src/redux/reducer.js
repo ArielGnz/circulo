@@ -3,6 +3,8 @@ import { GET_PRESTAMO, GET_SOCIOS } from "./action-types";
 const initialState = {
   socios: [],
   prestamos: [],
+  habitaciones: [],
+  registrosEstadia: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
