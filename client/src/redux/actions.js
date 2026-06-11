@@ -75,6 +75,18 @@ export const postPrestamo = (prestamoData) => {
   };
 };
 
+export const postHabitacion = (habitacionData) => {
+  return async function () {
+    try {
+      const response = await axios.post("/habitaciones", habitacionData);
+      return response.data;
+    } catch (error) {
+      console.error("Error en postHabitacion:", error.response?.data || error.message);
+      throw error;
+    }
+  };
+};
+
 export const eliminarPrestamo = (id) => {
   return async function (dispatch) {
     try {
