@@ -1,4 +1,13 @@
-import { GET_PRESTAMO, GET_SOCIOS } from "./action-types";
+import { GET_PRESTAMO,
+         GET_SOCIOS, 
+         GET_HABITACIONES, 
+         GET_REGISTRO_ESTADIA, 
+         POST_HABITACIONES, 
+         POST_REGISTRO_ESTADIA, 
+         PUT_HABITACION_ESTADO, 
+         PUT_REGISTRO_ESTADIA,
+        } from "./action-types";
+        
 import { POST_PRESTAMO } from "./action-types";
 
 import axios from "axios";
