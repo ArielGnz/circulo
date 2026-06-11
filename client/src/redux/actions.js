@@ -7,7 +7,7 @@ import { GET_PRESTAMO,
          PUT_HABITACION_ESTADO, 
          PUT_REGISTRO_ESTADIA,
         } from "./action-types";
-        
+
 import { POST_PRESTAMO } from "./action-types";
 
 import axios from "axios";
@@ -28,6 +28,26 @@ export const getSocios = () => {
     });
   };
 };
+
+export const getHabitaciones = () => {
+  return async function (dispatch) {
+    const response = await axios.get("/habitaciones");
+    return dispatch({
+      type: GET_HABITACIONES,
+      payload: response.data,
+    });
+  };
+}
+
+export const getRegistrosEstadia = () => {
+  return async function (dispatch) {
+    const response = await axios.get("/registrosEstadia");
+    return dispatch({
+      type: GET_REGISTRO_ESTADIA,
+      payload: response.data,
+    });
+  };
+}
 
 export const getPrestamo = () => {
   return async function (dispatch) {
